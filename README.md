@@ -1,2 +1,2 @@
 # hoseo
-stock price
+stock price.
