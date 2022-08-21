@@ -15,15 +15,15 @@ df = pd.DataFrame()
 for s in stocks:
     df[s] = mk.get_daily_price(s, '2019-01-01', '2022-08-21')['close']
   
-daily_ret = df.pct_change() 
-annual_ret = daily_ret.mean() * 252
-daily_cov = daily_ret.cov() 
-annual_cov = daily_cov * 252
+    daily_ret = df.pct_change() 
+    annual_ret = daily_ret.mean() * 252
+    daily_cov = daily_ret.cov() 
+    annual_cov = daily_cov * 252
 
-port_ret = [] 
-port_risk = [] 
-port_weights = []
-sharpe_ratio = [] 
+    port_ret = [] 
+    port_risk = [] 
+    port_weights = []
+    sharpe_ratio = [] 
 
 for _ in range(20000): 
     weights = np.random.random(len(stocks)) 
