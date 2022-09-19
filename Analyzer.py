@@ -13,8 +13,8 @@ import re
 class MarketDB:
     def __init__(self):
         """생성자: MariaDB 연결 및 종목코드 딕셔너리 생성"""
-        self.conn = pymysql.connect(host='localhost', user='root', 
-            password='tiger0328', db='INVESTAR', charset='utf8')
+        self.conn = pymysql.connect(host='219.251.99.114', user='bbongs', 
+            password='Qweasd123$', db='Investar', charset='utf8')
         self.codes = {}
         self.get_comp_info()
         
