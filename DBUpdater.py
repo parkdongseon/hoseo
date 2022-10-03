@@ -1,9 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[ ]:
-
-
 import pandas as pd
 from bs4 import BeautifulSoup
 import pymysql, calendar, time, json
@@ -14,8 +8,8 @@ from threading import Timer
 class DBUpdater:  
     def __init__(self):
         """생성자: MariaDB 연결 및 종목코드 딕셔너리 생성"""
-        self.conn = pymysql.connect(host='localhost', user='root',
-            password='tiger0328', db='INVESTAR', charset='utf8')
+        self.conn = pymysql.connect(host='219.251.99.114', user='bbongs',
+            password='Qweasd123$', db='Investar', charset='utf8')
         
         with self.conn.cursor() as curs:
             sql = """
@@ -165,4 +159,5 @@ class DBUpdater:
 if __name__ == '__main__':
     dbu = DBUpdater()
     dbu.execute_daily()
+
 
