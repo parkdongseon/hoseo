@@ -89,7 +89,7 @@ elif today_SEC_price > tomorrow_SEC_price:
     lower_price = (today_SEC_price - tomorrow_SEC_price) / today_SEC_price * 100
     print("선택하신 종목은 다음 날",round(float(lower_price), 2), "% 하한가로 예상됩니다.")
 else:
-    print("선택하신 종목은 다음날 주식 동결입니다.")
+    print("선택하신 종목은 다음 날 주식 동결입니다.")
 
 # 가격 예측에 어려움이 있어 추세를 파악하여 상한 및 하한을 예상해주기로 함
 
