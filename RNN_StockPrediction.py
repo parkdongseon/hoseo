@@ -84,10 +84,10 @@ tomorrow_SEC_price = pred_y[-1]
 
 if today_SEC_price < tomorrow_SEC_price:
     upper_price = (tomorrow_SEC_price - today_SEC_price) / today_SEC_price * 100
-    print("선택하신 종목은 익일",round(float(upper_price), 2), "% 상한가로 예상됩니다.")
+    print("선택하신 종목은 다음 날",round(float(upper_price), 2), "% 상한가로 예상됩니다.")
 elif today_SEC_price > tomorrow_SEC_price:
     lower_price = (today_SEC_price - tomorrow_SEC_price) / today_SEC_price * 100
-    print("선택하신 종목은 익일",round(float(lower_price), 2), "% 하한가로 예상됩니다.")
+    print("선택하신 종목은 다음 날",round(float(lower_price), 2), "% 하한가로 예상됩니다.")
 else:
     print("선택하신 종목은 다음날 주식 동결입니다.")
 
