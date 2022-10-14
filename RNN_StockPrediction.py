@@ -14,7 +14,8 @@ import matplotlib.pyplot as plt
 from Investar import Analyzer
 
 mk = Analyzer.MarketDB()
-raw_df = mk.get_daily_price('삼성전자', '2017-01-01', '2022-07-12')
+stocks = input('종목을 입력하세요 : ')
+raw_df = mk.get_daily_price(stocks, '2021-01-01', '2022-09-30')
 
 window_size = 10 
 data_size = 5
@@ -66,6 +67,8 @@ pred_y = model.predict(test_x)
 
 # Visualising the results
 plt.figure()
+plt.xticks(np.arange(0,0))
+plt.yticks(np.arange(0,0))
 plt.plot(test_y, color='red', label='real SEC stock price')
 plt.plot(pred_y, color='blue', label='predicted SEC stock price')
 plt.title('SEC stock price prediction')
@@ -75,5 +78,18 @@ plt.legend()
 plt.show()
 
 # raw_df.close[-1] : dfy.close[-1] = x : pred_y[-1]
-print("Tomorrow's SEC price :", raw_df.close[-1] * pred_y[-1] / dfy.close[-1], 'KRW')
+
+today_SEC_price =pred_y[-2]
+tomorrow_SEC_price = pred_y[-1]
+
+if today_SEC_price < tomorrow_SEC_price:
+    upper_price = (tomorrow_SEC_price - today_SEC_price) / today_SEC_price * 100
+    print("선택하신 종목은 익일",round(float(upper_price), 2), "% 상한가로 예상됩니다.")
+elif today_SEC_price > tomorrow_SEC_price:
+    lower_price = (today_SEC_price - tomorrow_SEC_price) / today_SEC_price * 100
+    print("선택하신 종목은 익일",round(float(lower_price), 2), "% 하한가로 예상됩니다.")
+else:
+    print("선택하신 종목은 다음날 주식 동결입니다.")
+
+# 가격 예측에 어려움이 있어 추세를 파악하여 상한 및 하한을 예상해주기로 함
 
